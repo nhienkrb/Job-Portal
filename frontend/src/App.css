@@ -42,3 +42,7 @@
     transform: scale(0.9);   /* thu nhỏ còn 80% */
   }
 }
+
+.text-color-primary{
+  color: #033BA0;
+}
