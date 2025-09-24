@@ -3,7 +3,7 @@ import React from "react";
 export default function Breadcrumb() {
   return (
     <div>
-      <nav className="flex px-4 max-w-screen-xl items-center justify-between mx-auto " aria-label="Breadcrumb">
+      <nav className="flex px-4 max-w-screen-xl items-center justify-between mx-auto pt-4 " aria-label="Breadcrumb">
         <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
           <li className="inline-flex items-center">
             <a
