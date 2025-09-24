@@ -5,7 +5,7 @@ import JobContainer from "./JobContainer"
 
 export default function JobDetail(){
   return (
-    <div className="px-4  gap-4 max-w-screen-xl  mx-auto  mt-2 bg-[#F5F5F5]">
+    <div className="px-4  gap-4 max-w-screen-xl  mx-auto   bg-[#F5F5F5]">
         <SearchJob/>
         <Breadcrumb/>
         <JobContainer/>
