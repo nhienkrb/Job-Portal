@@ -124,48 +124,48 @@ export default function SortFilter() {
         </div>
         {/* Tìm theo ngành nghề */}
         <div>
-          <div class="block max-w-sm p-3 bg-white border border-gray-200 rounded-lg shadow-sm  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-            <h6 class="mb-2 text-1xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <div className="block max-w-sm p-3 bg-white border border-gray-200 rounded-lg shadow-sm  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <h6 className="mb-2 text-1xl font-bold tracking-tight text-gray-900 dark:text-white">
               Tìm Theo Ngành Nghề
             </h6>
-            <ul class="custom-scroll cursor-pointer w-full text-sm font-medium text-gray-900 bg-white  dark:bg-gray-700 dark:border-gray-600 dark:text-white overflow-auto h-[300px]">
-              <li class="w-full px-4 py-2  rounded-t-lg dark:border-gray-600">
+            <ul className="custom-scroll cursor-pointer w-full text-sm font-medium text-gray-900 bg-white  dark:bg-gray-700 dark:border-gray-600 dark:text-white overflow-auto h-[300px]">
+              <li className="w-full px-4 py-2  rounded-t-lg dark:border-gray-600">
                 Kinh Doanh/Bán Hàng
               </li>
-              <li class="w-full px-4 py-2  dark:border-gray-600">
+              <li className="w-full px-4 py-2  dark:border-gray-600">
                 Hành Chính/Văn Phòng
               </li>
-              <li class="w-full px-4 py-2  dark:border-gray-600">
+              <li className="w-full px-4 py-2  dark:border-gray-600">
                 Kế Toán/Kiểm Toán
               </li>
-              <li class="w-full px-4 py-2 rounded-b-lg">
+              <li className="w-full px-4 py-2 rounded-b-lg">
                 Xây Dựng/Kiến Trúc/Nội Thất
               </li>
-              <li class="w-full px-4 py-2 rounded-b-lg">
+              <li className="w-full px-4 py-2 rounded-b-lg">
                 Xây Dựng/Kiến Trúc/Nội Thất
               </li>
-              <li class="w-full px-4 py-2 rounded-b-lg">
+              <li className="w-full px-4 py-2 rounded-b-lg">
                 Xây Dựng/Kiến Trúc/Nội Thất
               </li>
-              <li class="w-full px-4 py-2 rounded-b-lg">
+              <li className="w-full px-4 py-2 rounded-b-lg">
                 Marketing/PR/Quảng Cáo
               </li>
-              <li class="w-full px-4 py-2 rounded-b-lg">
+              <li className="w-full px-4 py-2 rounded-b-lg">
                 Sản Xuất/Lắp Ráp/Chế Biến
               </li>
-              <li class="w-full px-4 py-2 rounded-b-lg">
+              <li className="w-full px-4 py-2 rounded-b-lg">
                 Xây Dựng/Kiến Trúc/Nội Thất
               </li>
-              <li class="w-full px-4 py-2 rounded-b-lg">
+              <li className="w-full px-4 py-2 rounded-b-lg">
                 Xây Dựng/Kiến Trúc/Nội Thất
               </li>{" "}
-              <li class="w-full px-4 py-2 rounded-b-lg">
+              <li className="w-full px-4 py-2 rounded-b-lg">
                 Xây Dựng/Kiến Trúc/Nội Thất
               </li>{" "}
-              <li class="w-full px-4 py-2 rounded-b-lg">
+              <li className="w-full px-4 py-2 rounded-b-lg">
                 Xây Dựng/Kiến Trúc/Nội Thất
               </li>{" "}
-              <li class="w-full px-4 py-2 rounded-b-lg">
+              <li className="w-full px-4 py-2 rounded-b-lg">
                 Xây Dựng/Kiến Trúc/Nội Thất
               </li>
             </ul>
@@ -174,48 +174,48 @@ export default function SortFilter() {
 
         {/* Tìm theo địa điểm */}
         <div>
-          <div class="block max-w-sm p-3 bg-white border border-gray-200 rounded-lg shadow-sm  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-            <h6 class="mb-2 text-1xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <div className="block max-w-sm p-3 bg-white border border-gray-200 rounded-lg shadow-sm  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <h6 className="mb-2 text-1xl font-bold tracking-tight text-gray-900 dark:text-white">
               Tìm Theo Ngành Nghề
             </h6>
-            <ul class="custom-scroll cursor-pointer w-full text-sm font-medium text-gray-900 bg-white  dark:bg-gray-700 dark:border-gray-600 dark:text-white overflow-auto h-[300px]">
-              <li class="w-full px-4 py-2  rounded-t-lg dark:border-gray-600">
+            <ul className="custom-scroll cursor-pointer w-full text-sm font-medium text-gray-900 bg-white  dark:bg-gray-700 dark:border-gray-600 dark:text-white overflow-auto h-[300px]">
+              <li className="w-full px-4 py-2  rounded-t-lg dark:border-gray-600">
                 Kinh Doanh/Bán Hàng
               </li>
-              <li class="w-full px-4 py-2  dark:border-gray-600">
+              <li className="w-full px-4 py-2  dark:border-gray-600">
                 Hành Chính/Văn Phòng
               </li>
-              <li class="w-full px-4 py-2  dark:border-gray-600">
+              <li className="w-full px-4 py-2  dark:border-gray-600">
                 Kế Toán/Kiểm Toán
               </li>
-              <li class="w-full px-4 py-2 rounded-b-lg">
+              <li className="w-full px-4 py-2 rounded-b-lg">
                 Xây Dựng/Kiến Trúc/Nội Thất
               </li>
-              <li class="w-full px-4 py-2 rounded-b-lg">
+              <li className="w-full px-4 py-2 rounded-b-lg">
                 Xây Dựng/Kiến Trúc/Nội Thất
               </li>
-              <li class="w-full px-4 py-2 rounded-b-lg">
+              <li className="w-full px-4 py-2 rounded-b-lg">
                 Xây Dựng/Kiến Trúc/Nội Thất
               </li>
-              <li class="w-full px-4 py-2 rounded-b-lg">
+              <li className="w-full px-4 py-2 rounded-b-lg">
                 Marketing/PR/Quảng Cáo
               </li>
-              <li class="w-full px-4 py-2 rounded-b-lg">
+              <li className="w-full px-4 py-2 rounded-b-lg">
                 Sản Xuất/Lắp Ráp/Chế Biến
               </li>
-              <li class="w-full px-4 py-2 rounded-b-lg">
+              <li className="w-full px-4 py-2 rounded-b-lg">
                 Xây Dựng/Kiến Trúc/Nội Thất
               </li>
-              <li class="w-full px-4 py-2 rounded-b-lg">
+              <li className="w-full px-4 py-2 rounded-b-lg">
                 Xây Dựng/Kiến Trúc/Nội Thất
               </li>{" "}
-              <li class="w-full px-4 py-2 rounded-b-lg">
+              <li className="w-full px-4 py-2 rounded-b-lg">
                 Xây Dựng/Kiến Trúc/Nội Thất
               </li>{" "}
-              <li class="w-full px-4 py-2 rounded-b-lg">
+              <li className="w-full px-4 py-2 rounded-b-lg">
                 Xây Dựng/Kiến Trúc/Nội Thất
               </li>{" "}
-              <li class="w-full px-4 py-2 rounded-b-lg">
+              <li className="w-full px-4 py-2 rounded-b-lg">
                 Xây Dựng/Kiến Trúc/Nội Thất
               </li>
             </ul>
