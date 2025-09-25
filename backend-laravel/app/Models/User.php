@@ -17,10 +17,13 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $table = "users";
     protected $fillable = [
         'name',
         'email',
         'password',
+        'role',
+        'is_verified',
     ];
 
     /**
@@ -30,16 +33,39 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
-
-    /**
+     /**
      * The attributes that should be cast.
      *
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        'is_verified' => 'boolean',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
     ];
+      public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+    public function company()
+    {
+        return $this->hasOne(Company::class, 'employer_id');
+    }
+
+    public function jobApplications()
+    {
+        return $this->hasMany(JobApplication::class, 'candidate_id');
+    }
+
+    public function savedJobs()
+    {
+        return $this->hasMany(SavedJob::class, 'candidate_id');
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
 }
