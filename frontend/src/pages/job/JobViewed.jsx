@@ -7,13 +7,13 @@ export default function JobViewed() {
       <div className=" col-span-12">
         <h2 className="text-xl font-bold text-gray-800">Công Việc Đã Xem</h2>
       </div>
-      <div className="mt-2 col-span-4">
+      <div className="mt-2 col-span-12 sm:col-span-4">
         <JobCard />
       </div>
-      <div className="mt-2 col-span-4">
+      <div className="mt-2 col-span-12 sm:col-span-4">
         <JobCard />
       </div>
-      <div className="mt-2 col-span-4">
+      <div className="mt-2 col-span-12 sm:col-span-4">
         <JobCard />
       </div>
     </div>

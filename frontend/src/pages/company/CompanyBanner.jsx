@@ -34,20 +34,22 @@ export default function CompanyBanner() {
         </div>
       </div>
 
-        <Breadcrumb/>
-        <div className="px-4 grid grid-cols-12 gap-4 max-w-screen-xl  mx-auto  mt-2">
-          <div className="col-span-12">
-              <h2 className="text-2xl font-bold">660 Doanh nghiệp Tiêu Biểu đang tuyển dụng T9/2025</h2>
-          </div>
-          <div className="col-span-4">
-              <CompanyCard/>
-          </div>
-           <div className="col-span-4">
-              <CompanyCard/>
-          </div>
-           <div className="col-span-4">
-              <CompanyCard/>
-          </div>
+      <Breadcrumb />
+      <div className="px-4 grid grid-cols-12 gap-4 max-w-screen-xl  mx-auto  mt-2">
+        <div className="col-span-12">
+          <h2 className="text-2xl font-bold">
+            660 Doanh nghiệp Tiêu Biểu đang tuyển dụng T9/2025
+          </h2>
+        </div>
+        <div className=" col-span-12 sm:col-span-6 md:col-span-4">
+          <CompanyCard />
+        </div>
+        <div className="col-span-12 sm:col-span-6 md:col-span-4">
+          <CompanyCard />
+        </div>
+        <div className="col-span-12 sm:col-span-6 md:col-span-4">
+          <CompanyCard />
+        </div>
       </div>
     </div>
   );

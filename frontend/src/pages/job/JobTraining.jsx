@@ -142,7 +142,7 @@ export default function JobTraining() {
             <div
             style={{background:cat.bg_color}}
               key={cat.id}
-              className=" col-span-12 sm:col-span-4 md:col-span-2 lg:col-span-2 rounded-xl p-4 text-center bg-white shadow-sm hover:shadow-md transition cursor-pointer"
+              className=" col-span-12 sm:col-span-4 md:col-span-2  rounded-xl p-4 text-center bg-white shadow-sm hover:shadow-md transition cursor-pointer"
             >
               <div
                 className={`mx-auto w-12 h-12 flex items-center justify-center rounded-full ${cat.color}`}

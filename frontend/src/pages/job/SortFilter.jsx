@@ -4,7 +4,7 @@ import JobCard from "../../components/JobCard";
 export default function SortFilter() {
   return (
     <div className="px-4 grid grid-cols-12 gap-4 max-w-screen-xl   mx-auto ">
-      <div className="mt-5 col-span-9">
+      <div className="mt-5 col-span-12 sm:col-span-9">
         {/* Desktop: Radio buttons (hidden on mobile) */}
         <div className="flex justify-between">
           <div className="hidden md:flex items-center gap-6">
@@ -91,32 +91,32 @@ export default function SortFilter() {
         </div>
 
         <div className=" grid grid-cols-12 gap-4">
-          <div className="mt-5 col-span-6">
+          <div className="mt-5 col-span-12 sm:col-span-6">
             <JobCard />
           </div>
-          <div className="mt-5 col-span-6">
+          <div className="mt-5 col-span-12 sm:col-span-6">
             <JobCard />
           </div>
-          <div className="mt-5 col-span-6">
+          <div className="mt-5 col-span-12 sm:col-span-6">
             <JobCard />
           </div>
-          <div className="mt-5 col-span-6">
+          <div className="mt-5 col-span-12 sm:col-span-6">
             <JobCard />
           </div>
-          <div className="mt-5 col-span-6">
+          <div className="mt-5 col-span-12 sm:col-span-6">
             <JobCard />
           </div>
         </div>
       </div>
 
-      <div className=" mt-5 col-span-3 items-start space-y-5">
+      <div className=" mt-5 col-span-12  sm:col-span-3 items-start space-y-5">
         <div className="rounded-md">
           <img
-            className="rounded-md"
+            className="rounded-md w-full"
             src="https://media-blog.jobsgo.vn/blog/wp-content/uploads/2025/09/TD-VIETNAM-1.png"
           />
         </div>
-        <div className="rounded-md">
+        <div className="rounded-md  w-full">
           <img
             className="rounded-md"
             src="https://media-blog.jobsgo.vn/blog/wp-content/uploads/2025/08/CareerViet-Vuo%CC%82n-1.jpg"
@@ -124,7 +124,7 @@ export default function SortFilter() {
         </div>
         {/* Tìm theo ngành nghề */}
         <div>
-          <div className="block max-w-sm p-3 bg-white border border-gray-200 rounded-lg shadow-sm  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <div className="block max-w p-3 bg-white border border-gray-200 rounded-lg shadow-sm  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h6 className="mb-2 text-1xl font-bold tracking-tight text-gray-900 dark:text-white">
               Tìm Theo Ngành Nghề
             </h6>
@@ -174,7 +174,7 @@ export default function SortFilter() {
 
         {/* Tìm theo địa điểm */}
         <div>
-          <div className="block max-w-sm p-3 bg-white border border-gray-200 rounded-lg shadow-sm  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <div className="block max-w p-3 bg-white border border-gray-200 rounded-lg shadow-sm  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h6 className="mb-2 text-1xl font-bold tracking-tight text-gray-900 dark:text-white">
               Tìm Theo Ngành Nghề
             </h6>
