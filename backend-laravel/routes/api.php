@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Apis\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::group([
+//     'middleware' => 'api',
+//     'prefix' => 'v1/auth'
+// ], function () {
+//     Route::post('login', [AuthController::class, 'loginApi'])->name('auth.loginApi');
+//     Route::post('register', [AuthController::class, 'registerApi'])->name('auth.register');
+//     Route::get('verify/{token}', [AuthController::class, 'verifyToken']);
+//     Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout');
+//     Route::get('me', [AuthController::class, 'me'])->name('auth.me');
+// });
+Route::prefix('v1/auth')->group(function () {
+    Route::post('login', [AuthController::class, 'loginApi'])->name('auth.loginApi');
+    Route::post('register', [AuthController::class, 'registerApi'])->name('auth.register');
+    Route::get('verify/{token}', [AuthController::class, 'verifyToken'])->name('auth.verify');
+    Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::get('me', [AuthController::class, 'me'])->name('auth.me');
 });
