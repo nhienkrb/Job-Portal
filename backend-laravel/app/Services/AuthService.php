@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Tymon\JWTAuth\Facades\JWTAuth;
-use Illuminate\Support\Facades\Auth;
 
 class AuthService
 {
@@ -40,7 +39,7 @@ class AuthService
         return [
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => JWTAuth::factory()->getTTL() * 60,
+            'expires_in' => JWTAuth::factory()->getTTL() * 3600,
         ];
     }
 
@@ -52,7 +51,6 @@ class AuthService
                 $data['verify_token'] = Str::random(64);
                 $user = $this->user->create([
                     'password' => Hash::make($data['password']),
-
                 ]);
 
                 // Tạo profile (nếu có dữ liệu profile kèm theo)
@@ -85,7 +83,7 @@ class AuthService
             'verify_token' => null,
         ]);
 
-        return response()->json(['message' => 'Xác thực tài khoản thành công']);
+        return redirect("http://localhost:5173/");
     }
 
 
