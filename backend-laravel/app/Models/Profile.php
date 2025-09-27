@@ -33,10 +33,28 @@ class Profile extends Model
         return $this->belongsTo(User::class);
     }
 
+   // Fix this relationship
     public function skills()
     {
-        return $this->belongsToMany(Skill::class, 'candidate_skills')
-            ->withPivot('experience_years')
-            ->withTimestamps();
+        return $this->belongsToMany(Skill::class, 'candidate_skills', 'candidate_id', 'skill_id')
+                    ->withPivot('experience_years');
+    }
+
+    // Add this relationship to access the pivot model directly
+    public function candidateSkills()
+    {
+        return $this->hasMany(CandidateSkill::class, 'candidate_id');
+    }
+
+    // Relationship with job applications
+    public function jobApplications()
+    {
+        return $this->hasMany(JobApplication::class, 'candidate_id');
+    }
+
+    // Relationship with saved jobs
+    public function savedJobs()
+    {
+        return $this->hasMany(SavedJob::class, 'candidate_id');
     }
 }

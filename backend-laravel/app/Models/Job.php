@@ -52,7 +52,7 @@ class Job extends Model
         return $this->belongsToMany(Skill::class, 'job_skills');
     }
 
-    public function applications()
+      public function jobApplications()
     {
         return $this->hasMany(JobApplication::class);
     }

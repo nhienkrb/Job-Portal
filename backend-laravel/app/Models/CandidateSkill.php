@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class CandidateSkill extends Model
 {
     use HasFactory;
-protected $table = "candidate_skills";
+    
+    protected $table = "candidate_skills";
     protected $fillable = [
         'candidate_id',
         'skill_id',
@@ -22,6 +23,6 @@ protected $table = "candidate_skills";
 
     public function skill()
     {
-        return $this->belongsTo(Skill::class);
+        return $this->belongsTo(Skill::class, 'skill_id');
     }
 }
