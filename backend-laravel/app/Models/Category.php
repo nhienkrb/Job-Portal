@@ -15,6 +15,7 @@ class Category extends Model
         'parent_id',
         'description',
     ];
+    public $timestamps = false; 
 
     public function parent()
     {
@@ -30,7 +31,7 @@ class Category extends Model
     {
         return $this->hasMany(Job::class);
     }
-        // Lấy tất cả descendants (con, cháu, chắt...)
+    // Lấy tất cả descendants (con, cháu, chắt...)
     public function descendants()
     {
         return $this->children()->with('descendants');

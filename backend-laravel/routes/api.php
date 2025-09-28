@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Apis\AuthController;
+use App\Http\Controllers\Apis\CategoryController;
 use App\Http\Controllers\Apis\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,4 +48,18 @@ Route::prefix('v1/user')->middleware(['auth:api', 'role:admin'])->group(function
 
     Route::get('/role/{role}', [UserController::class, 'getByRole'])->name('user.getByRole');
     // Route::post('verify/{id}', [UserController::class, 'verify'])->name('user.verify');
+});
+
+
+Route::prefix('v1/category')->group(function () {
+    // Ai cũng truy cập được
+    Route::get('/', [CategoryController::class, 'index'])->name('category.getAll');
+    Route::get('/{id}', [CategoryController::class, 'show'])->name('category.show');
+
+    // Chỉ admin mới được phép tạo, sửa, xóa
+    Route::middleware(['auth:api', 'role:admin'])->group(function () {
+        Route::post('/', [CategoryController::class, 'store'])->name('category.create');
+        Route::put('/{id}', [CategoryController::class, 'update'])->name('category.update');
+        Route::delete('/{id}', [CategoryController::class, 'destroy'])->name('category.delete');
+    });
 });
