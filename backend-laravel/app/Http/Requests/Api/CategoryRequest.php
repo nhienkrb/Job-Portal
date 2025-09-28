@@ -23,11 +23,11 @@ class CategoryRequest extends BaseApiRequest
      */
     public function rules(): array
     {
-        $rules = [
-            'name' => 'required|string:max:255',
+        return [
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'parent_id' => 'nullable|integer', // hoặc 'nullable|exists:categories,id'
         ];
-
-        return $rules;
     }
 
     /**
