@@ -11,7 +11,7 @@ export default function ContainerJob(){
          <Breadcrumb/>
         <SortFilter/>
         <JobTraining/>
-        <JobViewed/>
+        {/* <JobViewed/> */}
         <CareerGuide/>
     </div>
   )

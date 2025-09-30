@@ -92,19 +92,19 @@ export default function SortFilter() {
 
         <div className=" grid grid-cols-12 gap-4">
           <div className="mt-5 col-span-12 sm:col-span-6">
-            <JobCard />
+            <JobCard job={""} />
           </div>
           <div className="mt-5 col-span-12 sm:col-span-6">
-            <JobCard />
+            <JobCard job={""} />
           </div>
           <div className="mt-5 col-span-12 sm:col-span-6">
-            <JobCard />
+            <JobCard job={""}/>
           </div>
           <div className="mt-5 col-span-12 sm:col-span-6">
-            <JobCard />
+            <JobCard job={""}/>
           </div>
           <div className="mt-5 col-span-12 sm:col-span-6">
-            <JobCard />
+            <JobCard job={""}/>
           </div>
         </div>
       </div>
