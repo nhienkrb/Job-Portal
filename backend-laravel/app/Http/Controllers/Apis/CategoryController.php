@@ -21,6 +21,16 @@ class CategoryController extends Controller
         return ApiResponse::success($this->categoryService->getAllCategories());
     }
 
+    public function categoryAllByName()
+    {
+        return ApiResponse::success($this->categoryService->getAllCategoriesByName());
+    }
+
+    public function countJobsAllByCategory()
+    {
+        return ApiResponse::success($this->categoryService->getCountJobsByCategory());
+    }
+
     // GET: Lấy category theo id (ai cũng truy cập được)
     public function show($id)
     {
