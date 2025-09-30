@@ -2,6 +2,13 @@ import React from "react";
 import useCategory from "../../hooks/useCategory";
 import IsError from "../../components/isError";
 
+const slideBanner = [
+  "/img/banner_home_sacombank.jpg",
+  "/img/hoa_sen_group.png",
+  "/img/Tin-TD-Concentrix-700x250-01-01-scaled.jpg",
+  "/img/1170x250.png",
+];
+
 export default function JobSearchBanner() {
   const { category, loading, error, fetchCategory } = useCategory();
   return (
@@ -90,26 +97,21 @@ export default function JobSearchBanner() {
               data-carousel="static"
             >
               <div className="relative h-60 overflow-hidden rounded-lg md:h-72">
-                <div
-                  className="hidden duration-700 ease-in-out"
-                  data-carousel-item
-                >
-                  <img
-                    src="https://media-blog.jobsgo.vn/blog/wp-content/uploads/2025/08/Tin-TD-Concentrix-700x250-01-01-scaled.jpg"
-                    className="absolute block w-full"
-                    alt="..."
-                  />
-                </div>
-                <div
-                  className="hidden duration-700 ease-in-out"
-                  data-carousel-item="active"
-                >
-                  <img
-                    src="https://jobsgo.vn/uploads/banner/banner_home_sacombank.jpg"
-                    className="absolute block w-full"
-                    alt="..."
-                  />
-                </div>
+                {slideBanner.map((banner, index) => (
+                  <div
+                    key={index}
+                    className={`duration-700 ease-in-out ${
+                      index === 0 ? "block" : "hidden"
+                    }`}
+                    data-carousel-item
+                  >
+                    <img
+                      src={banner}
+                      className="absolute block w-full h-full object-cover"
+                      alt={`Banner ${index + 1}`}
+                    />
+                  </div>
+                ))}
               </div>
               <button
                 type="button"
