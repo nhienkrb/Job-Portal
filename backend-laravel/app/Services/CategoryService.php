@@ -17,6 +17,16 @@ class CategoryService
     {
         return $this->categoryRepository->getAll();
     }
+    
+    public function getAllCategoriesByName()
+    {
+        return $this->categoryRepository->getAllByName();
+    }
+
+    public function getCountJobsByCategory()
+    {
+        return $this->categoryRepository->countJobsByCategory();
+    }
 
     public function getCategoryById($id)
     {
