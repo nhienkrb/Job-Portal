@@ -4,7 +4,16 @@ export const jobService = {
   // Lấy tất cả jobs
   getAllJobs: async (page = 1) => {
     try {
-      const response = await apiClient.get(`/job?page=${page}`);
+      const response = await apiClient.get(`/job`, { params: { page } });
+      return response;
+    } catch (error) {
+      throw error.response?.data || error.message;
+    }
+  },
+
+   getJobsByFilter: async (filters = {}) => {
+    try {
+      const response = await apiClient.get(`/job/filter`, { params: filters });
       return response;
     } catch (error) {
       throw error.response?.data || error.message;

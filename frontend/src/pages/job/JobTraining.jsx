@@ -1,4 +1,5 @@
 import React from "react";
+import JobMarket from "../home/JobMarket";
 
 // Dữ liệu chart (mock)
 const dataRecruiting = [
@@ -123,38 +124,6 @@ const categories = [
 
 export default function JobTraining() {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
-      {/* Banner */}
-
-      {/* Ngành nghề nổi bật */}
-      <div className="mt-10">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl font-bold text-gray-800">
-            Ngành Nghề Nổi Bật
-          </h2>
-          <button className="text-blue-600 font-medium hover:underline">
-            Xem thêm &gt;
-          </button>
-        </div>
-
-        <div className="grid grid-cols-12  gap-4  mt-6">
-          {categories.map((cat) => (
-            <div
-            style={{background:cat.bg_color}}
-              key={cat.id}
-              className=" col-span-12 sm:col-span-4 md:col-span-2  rounded-xl p-4 text-center bg-white shadow-sm hover:shadow-md transition cursor-pointer"
-            >
-              <div
-                className={`mx-auto w-12 h-12 flex items-center justify-center rounded-full ${cat.color}`}
-              >
-                <img src={cat.icon} alt={cat.name} className="w-10 h-10" />
-              </div>
-              <p className="mt-2 font-medium">{cat.name}</p>
-              <p className="text-sm text-gray-500">{cat.jobs} Việc làm</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    <JobMarket/>
   );
 }

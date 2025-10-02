@@ -1,5 +1,6 @@
+import { useSearchParams } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
-import { jobService } from "../service/JobService";
+import { jobService } from "../service/jobService";
 
 export const useJobs = () => {
   const [jobs, setJobs] = useState([]);
@@ -8,51 +9,37 @@ export const useJobs = () => {
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
 
+  const [searchParams] = useSearchParams();
 
-  // Lấy tất cả jobs
   const fetchJobs = useCallback(async (pageNum = 1) => {
     setLoading(true);
     setError(null);
+
     try {
-      const response = await jobService.getAllJobs(pageNum);
-    setJobs(response.data.data.data || []); 
-    setMeta(response.data.data); // meta là object phân trang
+      // Convert query string → object để truyền vào API
+      const filters = Object.fromEntries(searchParams.entries());
+      filters.page = pageNum; // thêm page
+      let response;
+      if (Object.keys(filters).length > 1) {
+        // Có filter → gọi filter API
+        response = await jobService.getJobsByFilter(filters);
+      } else {
+        // Không có filter → gọi all jobs
+        response = await jobService.getAllJobs(pageNum);
+      }
+      setJobs(response.data.data.data || response.data.data || []);
+      setMeta(response.data.data);
     } catch (err) {
       setError(err.message || "Có lỗi xảy ra khi tải danh sách việc làm");
       console.error("Error fetching jobs:", err);
     } finally {
       setLoading(false);
     }
-  });
-
-  // Tạo job mới
-  const createJob = async (jobData) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await jobService.createJob(jobData);
-      await fetchJobs(); // Refresh danh sách
-      return response;
-    } catch (err) {
-      setError(err.message || "Có lỗi xảy ra khi tạo việc làm");
-      console.error("Error creating job:", err);
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  };
+  }, [searchParams]);
 
   useEffect(() => {
     fetchJobs(page);
-  }, [page]);
+  }, [page, searchParams]);
 
-  return {
-     jobs,
-    meta,
-    page,
-    setPage,
-    loading,
-    error,
-    fetchJobs,
-  };
+  return { jobs, meta, page, setPage, loading, error, fetchJobs ,setJobs};
 };

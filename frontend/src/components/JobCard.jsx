@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import format from "../utils/formatters";
 const JobCard = ({ job }) => {
   const [isFavorite, setIsFavorite] = useState(false);
-console.log(job);
   // Xử lý click favorite
   const handleFavoriteClick = (e) => {
     e.stopPropagation();
     setIsFavorite(!isFavorite);
   };
-
   // Xử lý click card
   const handleCardClick = () => {
     window.location.href = `/job/${job.id}`;
@@ -30,8 +28,8 @@ console.log(job);
 
         <div className="flex-1 min-w-0">
           {/* Tiêu đề công việc */}
-          <h3 className="font-bold text-red-600 text-base leading-snug mb-1 line-clamp-2 hover:text-red-700">
-            {job.title}
+          <h3 className="font-bold text-red-600 text-base leading-snug mb-1 line-clamp-2 hover:text-red-700 ">
+            {job.title} 
           </h3>
 
           {/* Tên công ty */}
@@ -51,7 +49,7 @@ console.log(job);
 
       {/* Tags */}
       <div className="flex justify-between items-center">
-        <div className="flex flex-wrap gap-2 mt-3">
+        <div className="flex  gap-2 mt-3">
           {/* Loại hình việc làm */}
           {job.employment_type && (
             <span className="text-xs px-3 py-1 bg-gray-100 rounded-lg text-gray-600">
