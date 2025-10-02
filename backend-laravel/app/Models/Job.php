@@ -26,6 +26,8 @@ class Job extends Model
         'expires_at',
         'is_active',
         'views',
+        'position',
+        'education'
     ];
 
     protected $casts = [
@@ -52,7 +54,7 @@ class Job extends Model
         return $this->belongsToMany(Skill::class, 'job_skills');
     }
 
-      public function jobApplications()
+    public function jobApplications()
     {
         return $this->hasMany(JobApplication::class);
     }
