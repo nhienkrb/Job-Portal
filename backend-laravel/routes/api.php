@@ -71,7 +71,8 @@ Route::prefix('v1/company')->group(function () {
 Route::prefix('v1/job')->group(function () {
     // Ai cũng truy cập được
     Route::get('/', [JobController::class, 'index'])->name('job.getAll');
-    Route::get('/{id}', [JobController::class, 'show'])->name('job.show');
+    Route::get('/filter', [JobController::class, 'filter'])->name('job.filter');
+    // Route::get('/{id}', [JobController::class, 'show'])->name('job.show');
 
     // Chỉ admin mới được phép tạo, sửa, xóa
     Route::middleware(['auth:api', 'role:admin'])->group(function () {
