@@ -77,4 +77,32 @@ class UserController extends Controller
         if (!$user) return ApiResponse::notFound("User not found or verify failed");
         return ApiResponse::success($user, "User verified successfully");
     }
+
+    public function getUserWithProfileAndStats()
+    {
+        $user = Auth::user();
+        if (!$user) {
+            return ApiResponse::notFound("User not found");
+        }
+
+        $userDetail = $this->userService->getUserWithProfileAndStats($user->id);
+        return ApiResponse::success($userDetail);
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = Auth::user();
+        if (!$user) {
+            return ApiResponse::notFound("User not found");
+        }
+
+        $data = $request->all();
+        $updatedProfile = $this->userService->updateProfile($user->id, $data);
+        
+        if (!$updatedProfile) {
+            return ApiResponse::error("Failed to update profile");
+        }
+
+        return ApiResponse::success($updatedProfile, "Profile updated successfully");
+    }
 }

@@ -45,6 +45,7 @@ Route::prefix('v1/user')->group(function () {
     Route::get('stats', [UserController::class, 'stats'])->name('user.stats');
     Route::middleware(['auth:api', 'role:candidate'])->group(function () {
         Route::get('/me', [UserController::class, 'show'])->name('user.show');
+        Route::get('/me-with-profile', [UserController::class, 'getUserWithProfileAndStats'])->name('user.meWithProfile');
     });
 });
 

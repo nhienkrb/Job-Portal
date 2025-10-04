@@ -22,7 +22,7 @@ class UserRepository
 
     public function find($id)
     {
-        return  $this->user->with(['profile','profile.skills'])->findOrFail($id);
+        return  $this->user->with(['profile','profile.skills','jobApplications.job'])->findOrFail($id);
     }
 
     public function findByEmail($email)
