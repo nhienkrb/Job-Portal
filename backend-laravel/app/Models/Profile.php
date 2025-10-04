@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,24 +21,30 @@ class Profile extends Model
         'introduction',
         'cv_url',
         'education_level',
+        'isLookingFor'
     ];
 
     protected $casts = [
         'date_of_birth' => 'date',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
+        'isLookingFor' => 'boolean'
     ];
 
+    public function getDateOfBirthAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-   // Fix this relationship
+    // Fix this relationship
     public function skills()
     {
         return $this->belongsToMany(Skill::class, 'candidate_skills', 'candidate_id', 'skill_id')
-                    ->withPivot('experience_years');
+            ->withPivot('experience_years');
     }
 
     // Add this relationship to access the pivot model directly
