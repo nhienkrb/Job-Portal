@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Apis\AdminController;
 use App\Http\Controllers\Apis\AuthController;
 use App\Http\Controllers\Apis\CategoryController;
 use App\Http\Controllers\Apis\CompanyController;
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
 Route::prefix('v1/auth')->group(function () {
     Route::post('login', [AuthController::class, 'loginApi'])->name('auth.loginApi');
     Route::post('register', [AuthController::class, 'registerApi'])->name('auth.register');
@@ -26,19 +28,24 @@ Route::prefix('v1/auth')->group(function () {
 });
 
 // admin routes
-Route::prefix('v1/user')->middleware(['auth:api', 'role:admin'])->group(function () {
+Route::prefix('v1/admin/user')->middleware(['auth:api', 'role:admin'])->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('admin.getAll');
+    Route::post('/', [AdminController::class, 'store'])->name('admin.create');
+    Route::get('/{id}', [AdminController::class, 'show'])->name('admin.show');
+    Route::put('/{id}', [AdminController::class, 'update'])->name('admin.update');
+    Route::delete('/{id}', [AdminController::class, 'destroy'])->name('admin.delete');
+});
+
+
+Route::prefix('v1/user')->group(function () {
     Route::get('employers-with-companies', [UserController::class, 'employersWithCompanies'])->name('user.employersWithCompanies');
     Route::get('candidates-with-profiles', [UserController::class, 'candidatesWithProfiles'])->name('user.candidatesWithProfiles');
+    Route::get('/role/{role}', [UserController::class, 'getByRole'])->name('user.getByRole');
     Route::get('/search', [UserController::class, 'search'])->name('user.search');
     Route::get('stats', [UserController::class, 'stats'])->name('user.stats');
-    Route::get('/', [UserController::class, 'index'])->name('user.getAll');
-    Route::post('/', [UserController::class, 'store'])->name('user.create');
-    Route::get('/{id}', [UserController::class, 'show'])->name('user.show');
-    Route::put('/{id}', [UserController::class, 'update'])->name('user.update');
-    Route::delete('/{id}', [UserController::class, 'destroy'])->name('user.delete');
-
-    Route::get('/role/{role}', [UserController::class, 'getByRole'])->name('user.getByRole');
-    // Route::post('verify/{id}', [UserController::class, 'verify'])->name('user.verify');
+    Route::middleware(['auth:api', 'role:candidate'])->group(function () {
+        Route::get('/me', [UserController::class, 'show'])->name('user.show');
+    });
 });
 
 
@@ -63,7 +70,6 @@ Route::prefix('v1/company')->group(function () {
     Route::get('/', [CompanyController::class, 'index'])->name('company.getAll');
     Route::get('/job-counts', [CompanyController::class, 'companiesWithJobCounts'])->name('company.companiesWithJobCounts');
     Route::get('/{id}', [CompanyController::class, 'show'])->name('company.show');
-
 });
 
 
