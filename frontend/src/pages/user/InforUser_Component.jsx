@@ -52,31 +52,31 @@ const contact = useMemo(() => {
       return;
     }
 
-    setIsSaving(true);
-    try {
-      // Chuẩn bị dữ liệu để gửi lên server
-      const updateData = {
-        full_name: formData.fullName,
-        education_level: formData.position,
-        isLookingFor: formData.jobStatus === "Đang tìm việc",
-        date_of_birth: formData.birthday,
-        gender: formData.gender === "Nam" ? "male" : formData.gender === "Nữ" ? "female" : "other"
-      };
+  //   setIsSaving(true);
+  //   try {
+  //     // Chuẩn bị dữ liệu để gửi lên server
+  //     const updateData = {
+  //       full_name: formData.fullName,
+  //       education_level: formData.position,
+  //       isLookingFor: formData.jobStatus === "Đang tìm việc",
+  //       date_of_birth: formData.birthday,
+  //       gender: formData.gender === "Nam" ? "male" : formData.gender === "Nữ" ? "female" : "other"
+  //     };
 
-      // Gọi API cập nhật profile
-      await apiClient.put(`/user/profile/${profile.id}`, updateData);
+  //     // Gọi API cập nhật profile
+  //     await apiClient.put(`/user/profile/${profile.id}`, updateData);
       
-      // Cập nhật lại dữ liệu local
-      await refetch();
+  //     // Cập nhật lại dữ liệu local
+  //     await refetch();
       
-      showSuccess("Cập nhật hồ sơ thành công!");
-      setShowNameInput(false);
-    } catch (error) {
-      console.error("Error updating profile:", error);
-      showError("Có lỗi xảy ra khi cập nhật hồ sơ. Vui lòng thử lại!");
-    } finally {
-      setIsSaving(false);
-    }
+  //     showSuccess("Cập nhật hồ sơ thành công!");
+  //     setShowNameInput(false);
+  //   } catch (error) {
+  //     console.error("Error updating profile:", error);
+  //     showError("Có lỗi xảy ra khi cập nhật hồ sơ. Vui lòng thử lại!");
+  //   } finally {
+  //     setIsSaving(false);
+  //   }
   };
 
   return (
@@ -247,7 +247,7 @@ const contact = useMemo(() => {
         </div>
       </div>
       <div className="bg-white shadow-md rounded-lg p-5 mt-5">
-        <InformationBoard_Component />
+        <InformationBoard_Component informationBoard={{job_count:user.job_count, job_save:user.job_save}} />
       </div>
       <div className="bg-white shadow-md rounded-lg p-5 mt-5">
         <ListCVUpLoad_Component />

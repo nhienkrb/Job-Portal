@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function InformationBoard_Component() {
+export default function InformationBoard_Component({informationBoard }) {
   return (
     <div>
       {/* Thông tin chi tiết */}
@@ -37,7 +37,7 @@ export default function InformationBoard_Component() {
                 <p className="text-sm font-semibold text-[#959595]">
                   Lượt Xem
                 </p>
-                <p className="text-2xl font-bold ">123</p>
+                <p className="text-2xl font-bold ">0</p>
               </div>
             </div>
           </div>
@@ -65,7 +65,7 @@ export default function InformationBoard_Component() {
                 <p className="text-sm font-semibold text-[#959595]">
                  Tin Nhắn
                 </p>
-                <p className="text-2xl font-bold ">123</p>
+                <p className="text-2xl font-bold ">0</p>
               </div>
             </div>
           </div>
@@ -93,7 +93,7 @@ export default function InformationBoard_Component() {
                 <p className="text-sm font-semibold text-[#959595]">
                   Việc ứng tuyển
                 </p>
-                <p className="text-2xl font-bold ">123</p>
+                <p className="text-2xl font-bold ">{informationBoard.job_count}</p>
               </div>
             </div>
           </div>
@@ -121,7 +121,7 @@ export default function InformationBoard_Component() {
                 <p className="text-sm font-semibold text-[#959595]">
                  Việc đã lưu
                 </p>
-                <p className="text-2xl font-bold ">123</p>
+                <p className="text-2xl font-bold ">{informationBoard.job_save}</p>
               </div>
             </div>
           </div>
