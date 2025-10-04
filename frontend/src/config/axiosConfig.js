@@ -32,7 +32,7 @@ axiosInstance.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       // Xử lý unauthorized
-      localStorage.removeItem('auth_token');
+      localStorage.removeItem('token');
       window.location.href = '/login';
     }
     return Promise.reject(error);

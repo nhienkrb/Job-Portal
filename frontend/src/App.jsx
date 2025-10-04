@@ -17,10 +17,13 @@ import BlogDetail from "./pages/blog/BlogDetail";
 import Register from "./pages/auth/Register";
 import DefaultLayout from "./layout/DefaultLayout/DefaultLayout";
 import AuthLayout from "./layout/authLayout/AuthLayout";
+import { ToastProvider } from "./context/ToastContext";
+import Toaster from "./components/common/toaster/Toaster";
 
 function App() {
   return (
-    <Routes>
+    <ToastProvider>
+      <Routes>
       {/* Routes có layout mặc định (Header + Footer) */}
       <Route element={<DefaultLayout />}>
         <Route path="/" element={<Home />} />
@@ -30,6 +33,7 @@ function App() {
 
         <Route path="/candidate" element={<CandidateLayout />}>
           <Route index element={<ProfileUser />} />
+          <Route path="profile" element={<ProfileUser />} />
           <Route path="cv" element={<ProfileUser />} />
           <Route path="jobs-applied" element={<Candidate_Applied />} />
           <Route path="jobs-viewed" element={<Candidate_Viewed />} />
@@ -48,6 +52,8 @@ function App() {
         <Route path="/register" element={<Register />} />
       </Route>
     </Routes>
+    <Toaster />
+    </ToastProvider>
   );
 }
 

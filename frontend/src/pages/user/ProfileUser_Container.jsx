@@ -1,7 +1,7 @@
 import React from "react";
 import InforUser_Component from "./InforUser_Component";
 import Breadcrumb from "../../components/common/breadCrumb/Breadcrumb";
-import FeatureUser_Component from "./FeatureUser_Component";
+import ProfileSidebar from "./ProfileSidebar";
 
 export default function ProfileUser_Container() {
   return (
@@ -14,7 +14,7 @@ export default function ProfileUser_Container() {
           <InforUser_Component />
         </div>
         <div className="col-span-12 lg:col-span-4">
-          <FeatureUser_Component />
+          <ProfileSidebar />
         </div>
       </div>
     </div>
