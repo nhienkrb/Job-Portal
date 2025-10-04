@@ -31,14 +31,14 @@ export const jobService = {
   },
 
   // Tạo job mới
-  createJob: async (jobData) => {
-    try {
-      const response = await apiClient.post("/job", jobData);
-      return response.data;
-    } catch (error) {
-      throw error.response?.data || error.message;
-    }
-  },
+  // createJob: async (jobData) => {
+  //   try {
+  //     const response = await apiClient.post("/job", jobData);
+  //     return response.data;
+  //   } catch (error) {
+  //     throw error.response?.data || error.message;
+  //   }
+  // },
 
   // Cập nhật job
   updateJob: async (id, jobData) => {
