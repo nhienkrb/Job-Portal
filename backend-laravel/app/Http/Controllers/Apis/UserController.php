@@ -6,6 +6,7 @@ use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
 use App\Services\UserService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -13,27 +14,15 @@ class UserController extends Controller
     public function __construct(UserService $user_service)
     {
         $this->userService = $user_service;
-        $this->middleware('auth:api');
-        // Không cần kiểm tra role ở đây, đã kiểm tra ở middleware route
     }
 
-    public function index()
-    {
-        return ApiResponse::success($this->userService->getAllUsers());
-    }
 
-    public function store(Request $request)
+    public function show()
     {
-        $data = $request->all();
-        $user = $this->userService->createUser($data);
-        return ApiResponse::success($user, "User created successfully", 201);
-    }
-
-    public function show(string $id)
-    {
-        $user = $this->userService->getUserById($id);
+        $user = Auth::user();
+        $userDetail = $this->userService->getUserById($user->id);
         if (!$user) return ApiResponse::notFound("User not found");
-        return ApiResponse::success($user);
+        return ApiResponse::success($userDetail);
     }
 
     public function update(Request $request, string $id)

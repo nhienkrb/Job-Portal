@@ -4,8 +4,9 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
-class UserRepository 
+class UserRepository
 {
     protected $user;
 
@@ -21,7 +22,7 @@ class UserRepository
 
     public function find($id)
     {
-        return $this->user->findOrFail($id);
+        return  $this->user->with(['profile','profile.skills'])->findOrFail($id);
     }
 
     public function findByEmail($email)
@@ -65,7 +66,7 @@ class UserRepository
     public function searchUsers($searchTerm)
     {
         return $this->user->where('email', 'like', "%{$searchTerm}%")
-            ->orWhereHas('profile', function($query) use ($searchTerm) {
+            ->orWhereHas('profile', function ($query) use ($searchTerm) {
                 $query->where('full_name', 'like', "%{$searchTerm}%");
             })
             ->latest()
