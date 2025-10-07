@@ -6,6 +6,11 @@ use App\Http\Controllers\Apis\CategoryController;
 use App\Http\Controllers\Apis\CompanyController;
 use App\Http\Controllers\Apis\JobController;
 use App\Http\Controllers\Apis\UserController;
+use App\Http\Controllers\EmployerAPI\EmployerAnalyticsController;
+use App\Http\Controllers\EmployerAPI\EmployerCandidateController;
+use App\Http\Controllers\EmployerAPI\EmployerCompanyController;
+use App\Http\Controllers\EmployerAPI\EmployerController;
+use App\Http\Controllers\EmployerAPI\EmployerSettingsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,7 +48,7 @@ Route::prefix('v1/user')->group(function () {
     Route::get('/role/{role}', [UserController::class, 'getByRole'])->name('user.getByRole');
     Route::get('/search', [UserController::class, 'search'])->name('user.search');
     Route::get('stats', [UserController::class, 'stats'])->name('user.stats');
-    Route::middleware(['auth:api', 'role:candidate'])->group(function () {
+    Route::middleware(['auth:api', 'role:candidate,employer,admin'])->group(function () {
         Route::get('/me', [UserController::class, 'show'])->name('user.show');
         Route::get('/me-with-profile', [UserController::class, 'getUserWithProfileAndStats'])->name('user.meWithProfile');
     });
@@ -73,7 +78,40 @@ Route::prefix('v1/company')->group(function () {
     Route::get('/{id}', [CompanyController::class, 'show'])->name('company.show');
 });
 
+Route::prefix('v1/employer')->middleware(['auth:api', 'role:employer'])->group(function () {
 
+    //  Dashboard
+    Route::get('/dashboard', [EmployerController::class, 'dashboard'])
+        ->name('employer.dashboard');
+    Route::get('/analytics', [EmployerAnalyticsController::class, 'index']);
+
+    //  Job Management
+    Route::prefix('job')->group(function () {
+        Route::get('/', [EmployerController::class, 'index'])->name('employer.job.index');
+        Route::delete('/{id}', [EmployerController::class, 'destroy'])->name('employer.job.destroy');
+        // Có thể thêm: Route::post('/', 'store'), Route::put('/{id}', 'update') nếu cần
+    });
+
+    //  Candidate Management
+    Route::prefix('candidates')->group(function () {
+        Route::get('/', [EmployerCandidateController::class, 'index'])->name('employer.candidate.index');
+        Route::get('/{id}', [EmployerCandidateController::class, 'show'])->name('employer.candidate.show');
+    });
+
+    //  Company Management
+    Route::prefix('company')->group(function () {
+        Route::get('/', [EmployerCompanyController::class, 'show'])->name('employer.company.show');
+        Route::post('/', [EmployerCompanyController::class, 'store'])->name('employer.company.store');
+        Route::get('/stats', [EmployerCompanyController::class, 'stats'])->name('employer.company.stats');
+    });
+
+    //setting
+    Route::get('/profile', [EmployerSettingsController::class, 'showProfile']);
+    Route::put('/profile', [EmployerSettingsController::class, 'updateProfile']);
+    Route::put('/password', [EmployerSettingsController::class, 'updatePassword']);
+    Route::put('/notifications', [EmployerSettingsController::class, 'updateNotifications']);
+    Route::put('/privacy', [EmployerSettingsController::class, 'updatePrivacy']);
+});
 
 Route::prefix('v1/job')->group(function () {
     // Ai cũng truy cập được
